@@ -354,8 +354,9 @@ function Quotes() {
           buyAction = await quote.sell();
         }
 
+        console.log(buyAction);
         if (
-          buyAction.browser === ProviderBuyFeatureBrowserEnum.InAppOsBrowser
+          buyAction.browser === ProviderBuyFeatureBrowserEnum.AppBrowser
         ) {
           await renderInAppBrowser(
             buyAction,
@@ -364,7 +365,7 @@ function Quotes() {
             quote.fiat?.symbol,
           );
         } else if (
-          buyAction.browser === ProviderBuyFeatureBrowserEnum.AppBrowser
+          buyAction.browser === ProviderBuyFeatureBrowserEnum.InAppOsBrowser
         ) {
           const { url, orderId: customOrderId } = await buyAction.createWidget(
             callbackBaseUrl,

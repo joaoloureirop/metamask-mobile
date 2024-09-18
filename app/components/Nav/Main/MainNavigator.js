@@ -89,6 +89,7 @@ import NftDetailsFullImage from '../../Views/NftDetails/NFtDetailsFullImage';
 import AccountPermissions from '../../../components/Views/AccountPermissions';
 import { AccountPermissionsScreens } from '../../../components/Views/AccountPermissions/AccountPermissions.types';
 import StakeInputView from '../../UI/Stake/Views/InputView/StakeInputView';
+import InAppBrowserView from '../../Views/InAppBrowser';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -203,6 +204,17 @@ const TransactionsHome = () => (
   </Stack.Navigator>
 );
 
+const InAppBrowser = () => (
+  <Stack.Navigator
+    initialRouteName={Routes.BROWSER.VIEW}
+    mode={'modal'}
+    screenOptions={{
+      cardStyle: { backgroundColor: importedColors.transparent },
+    }}
+  >
+    <Stack.Screen name={Routes.BROWSER.VIEW} component={InAppBrowserView} />
+  </Stack.Navigator>
+)
 const BrowserFlow = () => (
   <Stack.Navigator
     initialRouteName={Routes.BROWSER.VIEW}
@@ -522,7 +534,7 @@ const HomeTabs = () => {
           <Tab.Screen
             name={Routes.BROWSER.HOME}
             options={options.browser}
-            component={BrowserFlow}
+            component={InAppBrowser}
           />
 
           <Tab.Screen

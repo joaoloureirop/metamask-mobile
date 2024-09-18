@@ -59,7 +59,7 @@ export default function useInAppBrowser() {
         dispatch(addFiatCustomIdData(customIdData));
       }
 
-      if (Device.isAndroid() || !(await InAppBrowser.isAvailable())) {
+      if (!(await InAppBrowser.isAvailable())) {
         Linking.openURL(url);
       } else {
         const prevLockTime = lockTime;
